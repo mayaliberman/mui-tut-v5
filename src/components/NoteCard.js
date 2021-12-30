@@ -6,28 +6,40 @@ import {
 	IconButton,
 	Typography,
 	styled,
+	Avatar,
 } from '@mui/material';
 import { DeleteOutline } from '@mui/icons-material';
+import { blue, green, pink, yellow } from '@mui/material/colors';
 
-const StyledCard = styled(Card, {
-	shouldForwardProp: (prop) => prop.category !== 'work',
-})(({ category, theme }) => ({
-	padding: theme.spacing(2),
+const StyledAvatar = styled(Avatar)(({ category, theme }) => ({
+	backgroundColor: blue[500],
 	...(category === 'work' && {
-		border: '1px solid red',
+		backgroundColor: yellow[700],
 	}),
+
+	...(category === 'money' && {
+		backgroundColor: green[500],
+	}),
+	...(category === 'todos' && {
+		backgroundColor: pink[500],
+	}),
+	
 }));
 
 export default function NoteCard({ note, handleDelete }) {
 	return (
 		<div>
-			<StyledCard
-				elevation={1}
+			<Card
+				elevation={0}
 				variant="outlined"
 				sx={{ minWidth: 275, minHeight: 200, margin: 2 }}
-				category={note.category}
 			>
 				<CardHeader
+					avatar={
+						<StyledAvatar category={note.category}>
+							{note.category[0].toUpperCase()}
+						</StyledAvatar>
+					}
 					action={
 						<IconButton onClick={() => handleDelete(note.id)}>
 							<DeleteOutline />
@@ -41,7 +53,7 @@ export default function NoteCard({ note, handleDelete }) {
 						{note.details}
 					</Typography>
 				</CardContent>
-			</StyledCard>
+			</Card>
 		</div>
 	);
 }

@@ -10,10 +10,11 @@ import {
 	FormLabel,
 	FormControl,
 	Box,
+	styled
 } from '@mui/material';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useHistory } from 'react-router-dom';
-
+const SpaceDiv = styled('div')(({ theme }) => theme.mixins.toolbar);
 export default function Create() {
 	const [title, setTitle] = useState('');
 	const [details, setDetails] = useState('');
@@ -43,7 +44,8 @@ export default function Create() {
 	};
 	return (
 		<Container>
-			<Box sx={{ width: '100%' }}>
+			<SpaceDiv />
+			<Box sx={{ width: '100%', height: '100vh' }}>
 				<Typography
 					variant="h6"
 					color="textSecondary"

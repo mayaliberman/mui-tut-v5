@@ -38,14 +38,14 @@ export default function Layout({ children }) {
 	const location = useLocation();
 
 	return (
-		<Box sx={{ background: '#f9f9f9', display: 'flex' }}>
+		<Box sx={{ background: '#f9f9f9'}}>
 			<AppBar elevation={0} sx={{ width: `calc(100% - ${drawerwidth}px)` }}>
 				<Toolbar>
 					<Typography sx={{ flexGrow: 1 }}>
 						Today is the {format(new Date(), 'do MMMM Y')}
 					</Typography>
 					<Typography>Mario</Typography>
-					<Avatar src="/maya computer.jpg" sx={{ marginLeft: 2 }} />
+					<Avatar src="/mario-av.png" sx={{ marginLeft: 2 }} />
 				</Toolbar>
 			</AppBar>
 			<Toolbar />

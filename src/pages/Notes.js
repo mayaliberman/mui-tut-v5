@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Paper, Container, Card, styled } from '@mui/material';
+import { Grid, Container, styled, Box, useMediaQuery } from '@mui/material';
+import Masonry from '@mui/lab/Masonry';
 import NoteCard from '../components/NoteCard';
 const SpaceDiv = styled('div')(({ theme }) => theme.mixins.toolbar);
 export default function Notes() {
@@ -20,15 +21,15 @@ export default function Notes() {
 	};
 
 	return (
-		<Container>
+		<Container sx={{width: '100%'}}>
 			<SpaceDiv />
-			<Grid container spacing={3}>
+			<Masonry>
 				{notes.map((note) => (
-					<Grid item key={note.id} xs={12} md={6} lg={4}>
+					<Box key={note.id}>
 						<NoteCard note={note} handleDelete={handleDelete} />
-					</Grid>
+					</Box>
 				))}
-			</Grid>
+			</Masonry>
 		</Container>
 	);
 }
